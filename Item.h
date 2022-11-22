@@ -5,5 +5,5 @@ struct list_node{
 
 struct int_item {
     struct list_node node;
-    const int value;
+    int value;
 };
