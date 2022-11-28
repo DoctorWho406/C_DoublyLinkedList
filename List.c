@@ -1,8 +1,8 @@
 #include <stddef.h>
 #include "Item.h"
 
-struct list_node *list_get_tail(struct list_node **head) {
-    struct list_node *current_node = *head;
+list_node_t *list_get_tail(list_node_t **head) {
+    list_node_t *current_node = *head;
     if(!current_node) {
         return NULL;
     }
@@ -12,8 +12,8 @@ struct list_node *list_get_tail(struct list_node **head) {
     return current_node;
 }
 
-struct list_node *list_append(struct list_node **head, struct list_node *item) {
-    struct list_node *tail = list_get_tail(head);
+list_node_t *list_append(list_node_t **head, list_node_t *item) {
+    list_node_t *tail = list_get_tail(head);
     if (!tail) {
         *head = item;
     } else {
@@ -24,8 +24,8 @@ struct list_node *list_append(struct list_node **head, struct list_node *item) {
     return item;
 }
 
-struct list_node *list_pop(struct list_node **head) {
-    struct list_node *current_head = *head;
+list_node_t *list_pop(list_node_t **head) {
+    list_node_t *current_head = *head;
     if (!current_head) {
         return NULL;
     }
@@ -35,15 +35,15 @@ struct list_node *list_pop(struct list_node **head) {
     return current_head;
 }
 
-struct list_node *list_remove(struct list_node **head, struct list_node *item) {
-    struct list_node *current_node = *head;
+list_node_t *list_remove(list_node_t **head, list_node_t *item) {
+    list_node_t *current_node = *head;
     while(current_node->next != item) {
         current_node = current_node->next;
     }
     if(!current_node) { // scroll all and not find item
         return NULL;
     }
-    struct list_node *removed = current_node->next;
+    list_node_t *removed = current_node->next;
     current_node->next = current_node->next->next;
     current_node->next->prev = current_node;    
     removed->next = NULL;
@@ -52,9 +52,9 @@ struct list_node *list_remove(struct list_node **head, struct list_node *item) {
 }
 
 
-struct list_node *list_reverse(struct list_node **head) {
-    struct list_node *curr_node = *head;
-    struct list_node *prev_node = NULL;
+list_node_t *list_reverse(list_node_t **head) {
+    list_node_t *curr_node = *head;
+    list_node_t *prev_node = NULL;
 
     while(curr_node) {
         prev_node = curr_node->prev;
@@ -66,8 +66,8 @@ struct list_node *list_reverse(struct list_node **head) {
     return prev_node->prev;
 }
 
-struct list_node *list_insert_after(struct list_node **head, struct list_node *item, struct list_node *after) {
-    struct list_node *curr_node = *head;
+list_node_t *list_insert_after(list_node_t **head, list_node_t *item, list_node_t *after) {
+    list_node_t *curr_node = *head;
     while (curr_node && curr_node != after) {
         curr_node = curr_node->next;
     }
@@ -83,8 +83,8 @@ struct list_node *list_insert_after(struct list_node **head, struct list_node *i
     return item;
 }
 
-struct list_node *list_insert_before(struct list_node **head, struct list_node *item, struct list_node *before) {
-    struct list_node *curr_node = *head;
+list_node_t *list_insert_before(list_node_t **head, list_node_t *item, list_node_t *before) {
+    list_node_t *curr_node = *head;
     while (curr_node && curr_node != before) {
         curr_node = curr_node->next;
     }

@@ -2,105 +2,105 @@
 #include <stdio.h>
 #include "Functions.h"
 
-#define toList (struct list_node **)
-#define toNode (struct list_node *)
-#define toIntItem (struct int_item *)
+#define to_list (list_node_t **)
+#define to_node (list_node_t *)
+#define to_int_item (int_item_t *)
 
 int main() {
-    struct int_item *my_doublylinked_list = NULL;
-    struct int_item *first_item = int_item_new(8);
-    struct int_item *new_item = int_item_new(3);
-    list_append(toList&my_doublylinked_list, toNode first_item);
-    list_append(toList&my_doublylinked_list, toNode new_item);
-    list_append(toList&my_doublylinked_list, toNode int_item_new(1));
-    list_append(toList&my_doublylinked_list, toNode int_item_new(1));
+    int_item_t *my_doublylinked_list = NULL;
+    int_item_t *first_item = int_item_new(8);
+    int_item_t *new_item = int_item_new(3);
+    list_append(to_list&my_doublylinked_list, to_node first_item);
+    list_append(to_list&my_doublylinked_list, to_node new_item);
+    list_append(to_list&my_doublylinked_list, to_node int_item_new(1));
+    list_append(to_list&my_doublylinked_list, to_node int_item_new(1));
     printf("==========LIST==========\n");
-    struct int_item *int_item = my_doublylinked_list;
+    int_item_t *int_item = my_doublylinked_list;
     while (int_item) {
         if(int_item->node.prev) {
-            printf("%d<-", (toIntItem int_item->node.prev)->value);
+            printf("%d<-", (to_int_item int_item->node.prev)->value);
         } else {
             printf(" <-");
         }
         printf("%d", int_item->value);
         if(int_item->node.next) {
-            printf("->%d\n", (toIntItem int_item->node.next)->value);
+            printf("->%d\n", (to_int_item int_item->node.next)->value);
         } else {
             printf("-> \n");
         }
-        int_item = toIntItem int_item->node.next;
+        int_item = to_int_item int_item->node.next;
     }
 
-    list_remove(toList&my_doublylinked_list, toNode new_item);
+    list_remove(to_list&my_doublylinked_list, to_node new_item);
     printf("==========LIST AFTER REMOVE==========\n");
     int_item = my_doublylinked_list;
     while (int_item) {
         if(int_item->node.prev) {
-            printf("%d<-", (toIntItem int_item->node.prev)->value);
+            printf("%d<-", (to_int_item int_item->node.prev)->value);
         } else {
             printf(" <-");
         }
         printf("%d", int_item->value);
         if(int_item->node.next) {
-            printf("->%d\n", (toIntItem int_item->node.next)->value);
+            printf("->%d\n", (to_int_item int_item->node.next)->value);
         } else {
             printf("-> \n");
         }
-        int_item = toIntItem int_item->node.next;
+        int_item = to_int_item int_item->node.next;
     }
 
     printf("==========REVERSED LIST==========\n");
-    struct int_item *my_reversed_doublylinked_list = toIntItem list_reverse(toList&my_doublylinked_list);
+    int_item_t *my_reversed_doublylinked_list = to_int_item list_reverse(to_list&my_doublylinked_list);
     int_item = my_reversed_doublylinked_list;
     while (int_item) {
         if(int_item->node.prev) {
-            printf("%d<-", (toIntItem int_item->node.prev)->value);
+            printf("%d<-", (to_int_item int_item->node.prev)->value);
         } else {
             printf(" <-");
         }
         printf("%d", int_item->value);
         if(int_item->node.next) {
-            printf("->%d\n", (toIntItem int_item->node.next)->value);
+            printf("->%d\n", (to_int_item int_item->node.next)->value);
         } else {
             printf("-> \n");
         }
-        int_item = toIntItem int_item->node.next;
+        int_item = to_int_item int_item->node.next;
     }
 
-    list_insert_before(toList&my_reversed_doublylinked_list, toNode new_item, toNode first_item);
+    list_insert_before(to_list&my_reversed_doublylinked_list, to_node new_item, to_node first_item);
     printf("==========INSERT BEFORE==========\n");
     int_item = my_reversed_doublylinked_list;
     while (int_item) {
         if(int_item->node.prev) {
-            printf("%d<-", (toIntItem int_item->node.prev)->value);
+            printf("%d<-", (to_int_item int_item->node.prev)->value);
         } else {
             printf(" <-");
         }
         printf("%d", int_item->value);
         if(int_item->node.next) {
-            printf("->%d\n", (toIntItem int_item->node.next)->value);
+            printf("->%d\n", (to_int_item int_item->node.next)->value);
         } else {
             printf("-> \n");
         }
-        int_item = toIntItem int_item->node.next;
+        int_item = to_int_item int_item->node.next;
     }
 
-    list_insert_after(toList&my_reversed_doublylinked_list, toNode int_item_new(5), toNode new_item);
+    list_insert_after(to_list&my_reversed_doublylinked_list, to_node int_item_new(5), to_node new_item);
     printf("==========INSERT AFTER==========\n");
     int_item = my_reversed_doublylinked_list;
     while (int_item) {
         if(int_item->node.prev) {
-            printf("%d<-", (toIntItem int_item->node.prev)->value);
+            printf("%d<-", (to_int_item int_item->node.prev)->value);
         } else {
             printf(" <-");
         }
         printf("%d", int_item->value);
         if(int_item->node.next) {
-            printf("->%d\n", (toIntItem int_item->node.next)->value);
+            printf("->%d\n", (to_int_item int_item->node.next)->value);
         } else {
             printf("-> \n");
         }
-        int_item = toIntItem int_item->node.next;
+        int_item = to_int_item int_item->node.next;
     }
 
     return 0;
