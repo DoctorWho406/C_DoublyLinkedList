@@ -1,4 +1,4 @@
-typedef struct list_node{
+typedef struct list_node {
     struct list_node *prev;
     struct list_node *next;
 } list_node_t;

@@ -3,7 +3,7 @@
 
 list_node_t *list_get_tail(list_node_t **head) {
     list_node_t *current_node = *head;
-    if(!current_node) {
+    if (!current_node) {
         return NULL;
     }
     while (current_node->next) {
@@ -37,15 +37,15 @@ list_node_t *list_pop(list_node_t **head) {
 
 list_node_t *list_remove(list_node_t **head, list_node_t *item) {
     list_node_t *current_node = *head;
-    while(current_node->next != item) {
+    while (current_node->next != item) {
         current_node = current_node->next;
     }
-    if(!current_node) { // scroll all and not find item
+    if (!current_node) { // scroll all and not find item
         return NULL;
     }
     list_node_t *removed = current_node->next;
     current_node->next = current_node->next->next;
-    current_node->next->prev = current_node;    
+    current_node->next->prev = current_node;
     removed->next = NULL;
     removed->prev = NULL;
     return removed;
@@ -56,7 +56,7 @@ list_node_t *list_reverse(list_node_t **head) {
     list_node_t *curr_node = *head;
     list_node_t *prev_node = NULL;
 
-    while(curr_node) {
+    while (curr_node) {
         prev_node = curr_node->prev;
         curr_node->prev = curr_node->next;
         curr_node->next = prev_node;
@@ -71,11 +71,11 @@ list_node_t *list_insert_after(list_node_t **head, list_node_t *item, list_node_
     while (curr_node && curr_node != after) {
         curr_node = curr_node->next;
     }
-    if(!curr_node) {
+    if (!curr_node) {
         return NULL;
     }
     item->next = curr_node->next;
-    if(item->next) {
+    if (item->next) {
         item->next->prev = item;
     }
     item->prev = curr_node;
@@ -88,11 +88,11 @@ list_node_t *list_insert_before(list_node_t **head, list_node_t *item, list_node
     while (curr_node && curr_node != before) {
         curr_node = curr_node->next;
     }
-    if(!curr_node) {
+    if (!curr_node) {
         return NULL;
     }
     item->prev = curr_node->prev;
-    if(item->prev) {
+    if (item->prev) {
         item->prev->next = item;
     }
     item->next = curr_node;
