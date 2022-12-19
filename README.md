@@ -1,16 +1,32 @@
 # C_DoublyLinkedList
 Simple implementation of Doubly LinkedList in C
 
-## Using
+# Usage
 
-Create executable using `List.c`, `IntItem.c` and `DoublyLinkedList.c`
+You could create a dll using `make.bat` (it require clang.exe)
 
-### Example with clang.exe
+## Command with clang.exe
 ```
-clang.exe -o DoublyLinkedList.exe DoublyLinkedList.c IntItem.c List.c
+clang -shared -o library/doublylinkedlist.dll -I include src/DoublyLinkedList.c
 ```
+N.B.<br>
+It requires that the `library` folder exists
 
-### Run it
+## Use it
+Copy the content of `library` and `include` folders wjere you want and use it in your code. 
+
+# Example
+
+Create executable using `example.bat` (it require clang.exe)
+
+## Command with clang.exe
 ```
-./DoublyLinkedList.exe
+clang -o examples/bin/Example.exe -I include -I examples/include src/DoublyLinkedList.c examples/src/IntItem.c examples/src/main.c
+```
+N.B.<br>
+It requires that the `examples/bin` folder exists
+
+## Run it
+```
+./examples/bin/Example.exe
 ```
