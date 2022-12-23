@@ -13,7 +13,7 @@ N.B.<br>
 It requires that the `library` folder exists
 
 ## Use it
-Copy the content of `library` and `include` folders wjere you want and use it in your code. 
+Copy the content of `library` and `include` folders where you want and use it in your code. 
 
 # API
 
