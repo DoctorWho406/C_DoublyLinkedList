@@ -81,7 +81,7 @@ struct int_item {
         </tr>
         <tr>
             <td>size_t</td>
-            <td>Size of the data to compare in the structure<br/>In the above example the length of the string</td>
+            <td>Size of the data to compare in the structure<br/>In the above example the length of the int type</td>
         </tr>
         <tr>
             <td>list_reverse</td>
